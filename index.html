@@ -79,6 +79,7 @@
         }
       }
     </style>
+    
   </head>
   <body class="bg-gray-50 text-gray-800">
     <!-- Navigation -->
@@ -139,9 +140,12 @@
 
     <!-- Hero Section -->
     <section
-      class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-900 to-accent-800 text-white pt-20"
+      id="hero"
+      class="relative min-h-screen flex items-center justify-center text-white pt-20 bg-cover bg-center bg-fixed"
+      style="background-image: url('https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
     >
-      <div class="container mx-auto px-6 text-center">
+      <div class="absolute inset-0 bg-primary-900 opacity-85"></div>
+      <div class="relative z-10 container mx-auto px-6 text-center">
         <div class="animate-fade-in">
           <h1 class="text-4xl md:text-6xl font-bold mb-4">
             RAKOTOARISOA ANDRIANINA
