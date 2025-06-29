@@ -159,17 +159,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function populateExperience() {
     resumeData.experience.forEach((exp, index) => {
         const expElement = document.createElement('div');
-        expElement.className = 'bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500 animate-slide-up';
+        expElement.className = 'bg-white p-6 rounded-lg shadow-md border-l-4 border-primary-700 animate-slide-up';
         expElement.style.animationDelay = `${index * 0.1}s`;
         
         expElement.innerHTML = `
             <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800">${exp.title}</h3>
-                    <p class="text-blue-600 font-medium">${exp.company}</p>
+                    <p class="text-primary-700 font-medium">${exp.company}</p>
                     <p class="text-gray-500 text-sm">${exp.location}</p>
                 </div>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">${exp.period}</span>
+                <span class="bg-primary-100 text-primary-800 px-3 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">${exp.period}</span>
             </div>
             <p class="text-gray-600 mb-4">${exp.description}</p>
             <div class="flex flex-wrap gap-2">
@@ -187,16 +187,16 @@ function populateExperience() {
 function populateEducation() {
     resumeData.education.forEach((edu, index) => {
         const eduElement = document.createElement('div');
-        eduElement.className = 'bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 animate-slide-up';
+        eduElement.className = 'bg-white p-6 rounded-lg shadow-md border-l-4 border-secondary-600 animate-slide-up';
         eduElement.style.animationDelay = `${index * 0.1}s`;
         
         eduElement.innerHTML = `
             <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800">${edu.title}</h3>
-                    <p class="text-green-600 font-medium">${edu.institution}</p>
+                    <p class="text-secondary-700 font-medium">${edu.institution}</p>
                 </div>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">${edu.period}</span>
+                <span class="bg-secondary-100 text-secondary-800 px-3 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">${edu.period}</span>
             </div>
             <p class="text-gray-600 mb-4">${edu.description}</p>
             <div class="flex flex-wrap gap-2">
@@ -215,7 +215,7 @@ function populateSkills() {
     // Technical Skills
     resumeData.skills.technicalSkills.forEach(skill => {
         const skillElement = document.createElement('span');
-        skillElement.className = 'bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium';
+        skillElement.className = 'bg-primary-100 text-primary-800 px-3 py-1 rounded-full text-sm font-medium';
         skillElement.textContent = skill;
         technicalSkills.appendChild(skillElement);
     });
@@ -225,7 +225,7 @@ function populateSkills() {
         const skillElement = document.createElement('div');
         skillElement.className = 'flex items-center';
         skillElement.innerHTML = `
-            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+            <i class="fas fa-check-circle text-secondary-600 mr-2"></i>
             <span class="text-gray-700">${skill}</span>
         `;
         softSkills.appendChild(skillElement);
@@ -298,7 +298,7 @@ window.addEventListener('load', () => {
 // Add scroll progress indicator
 function createScrollProgress() {
     const progressBar = document.createElement('div');
-    progressBar.className = 'fixed top-0 left-0 w-full h-1 bg-blue-600 z-50 transform origin-left scale-x-0 transition-transform duration-150';
+    progressBar.className = 'fixed top-0 left-0 w-full h-1 bg-primary-700 z-50 transform origin-left scale-x-0 transition-transform duration-150';
     progressBar.id = 'scroll-progress';
     document.body.appendChild(progressBar);
 
