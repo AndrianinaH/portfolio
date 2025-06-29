@@ -3,53 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAKOTOARISOA ANDRIANINA - Senior Fullstack Developer</title>
+    <title>ANDRIANINA RAKOTOARISOA - Senior Fullstack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ["ui-sans-serif", "system-ui"],
+              mono: ["Source Code Pro", "monospace"],
+            },
             colors: {
               primary: {
-                50: '#e8eaf6',
-                100: '#c5cae9',
-                200: '#9fa8da',
-                300: '#7986cb',
-                400: '#5c6bc0',
-                500: '#3f51b5',
-                600: '#3949ab',
-                700: '#303f9f',
-                800: '#283593',
-                900: '#1a237e',
+                50: "#e8eaf6",
+                100: "#c5cae9",
+                200: "#9fa8da",
+                300: "#7986cb",
+                400: "#5c6bc0",
+                500: "#3f51b5",
+                600: "#3949ab",
+                700: "#303f9f",
+                800: "#283593",
+                900: "#1a237e",
               },
               secondary: {
-                50: '#fff3e0',
-                100: '#ffe0b2',
-                200: '#ffcc80',
-                300: '#ffb74d',
-                400: '#ffa726',
-                500: '#ff9800',
-                600: '#fb8c00',
-                700: '#f57c00',
-                800: '#ef6c00',
-                900: '#e65100',
+                50: "#fff3e0",
+                100: "#ffe0b2",
+                200: "#ffcc80",
+                300: "#ffb74d",
+                400: "#ffa726",
+                500: "#ff9800",
+                600: "#fb8c00",
+                700: "#f57c00",
+                800: "#ef6c00",
+                900: "#e65100",
               },
               accent: {
-                50: '#f3e5f5',
-                100: '#e1bee7',
-                200: '#ce93d8',
-                300: '#ba68c8',
-                400: '#ab47bc',
-                500: '#9c27b0',
-                600: '#8e24aa',
-                700: '#7b1fa2',
-                800: '#6a1b9a',
-                900: '#4a148c',
-              }
+                50: "#f3e5f5",
+                100: "#e1bee7",
+                200: "#ce93d8",
+                300: "#ba68c8",
+                400: "#ab47bc",
+                500: "#9c27b0",
+                600: "#8e24aa",
+                700: "#7b1fa2",
+                800: "#6a1b9a",
+                900: "#4a148c",
+              },
             },
             animation: {
               "fade-in": "fadeIn 0.5s ease-in-out",
@@ -78,8 +86,21 @@
           opacity: 1;
         }
       }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .blinking-cursor {
+        animation: blink 1s step-end infinite;
+      }
     </style>
-    
   </head>
   <body class="bg-gray-50 text-gray-800">
     <!-- Navigation -->
@@ -89,15 +110,21 @@
     >
       <div class="container mx-auto px-6 py-4">
         <div class="flex justify-between items-center">
-          <div class="text-xl font-bold text-primary-900">ANDRIANINA</div>
+          <div class="text-xl font-bold text-primary-900 font-mono">
+            ANDRIANINA
+          </div>
           <div class="hidden md:flex space-x-6">
             <a href="#about" class="hover:text-primary-700 transition-colors"
               >About</a
             >
-            <a href="#experience" class="hover:text-primary-700 transition-colors"
+            <a
+              href="#experience"
+              class="hover:text-primary-700 transition-colors"
               >Experience</a
             >
-            <a href="#education" class="hover:text-primary-700 transition-colors"
+            <a
+              href="#education"
+              class="hover:text-primary-700 transition-colors"
               >Education</a
             >
             <a href="#skills" class="hover:text-primary-700 transition-colors"
@@ -115,7 +142,9 @@
       <!-- Mobile Menu -->
       <div class="md:hidden hidden bg-white border-t" id="mobile-menu">
         <div class="px-6 py-4 space-y-2">
-          <a href="#about" class="block hover:text-primary-700 transition-colors"
+          <a
+            href="#about"
+            class="block hover:text-primary-700 transition-colors"
             >About</a
           >
           <a
@@ -128,10 +157,14 @@
             class="block hover:text-primary-700 transition-colors"
             >Education</a
           >
-          <a href="#skills" class="block hover:text-primary-700 transition-colors"
+          <a
+            href="#skills"
+            class="block hover:text-primary-700 transition-colors"
             >Skills</a
           >
-          <a href="#contact" class="block hover:text-primary-700 transition-colors"
+          <a
+            href="#contact"
+            class="block hover:text-primary-700 transition-colors"
             >Contact</a
           >
         </div>
@@ -142,15 +175,17 @@
     <section
       id="hero"
       class="relative min-h-screen flex items-center justify-center text-white pt-20 bg-cover bg-center bg-fixed"
-      style="background-image: url('https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      "
     >
       <div class="absolute inset-0 bg-primary-900 opacity-85"></div>
       <div class="relative z-10 container mx-auto px-6 text-center">
         <div class="animate-fade-in">
-          <h1 class="text-4xl md:text-6xl font-bold mb-4">
-            RAKOTOARISOA ANDRIANINA
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 font-mono">
+            ANDRIANINA RAKOTOARISOA
           </h1>
-          <h2 class="text-xl md:text-2xl mb-6 text-primary-200">
+          <h2 class="text-xl md:text-2xl mb-6 text-primary-200 font-mono">
             SENIOR FULLSTACK DEVELOPER (REACT / NODE.JS)
           </h2>
           <p class="text-lg mb-8 max-w-2xl mx-auto text-primary-100">
@@ -182,7 +217,7 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 font-mono">About Me</h2>
         <div class="max-w-4xl mx-auto">
           <p class="text-lg leading-relaxed text-gray-600 mb-8">
             A fullstack developer with 7 years of experience, specializing in
@@ -219,7 +254,7 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20 bg-gray-50">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">
+        <h2 class="text-3xl font-bold text-center mb-12 font-mono">
           Professional Experience
         </h2>
         <div class="max-w-4xl mx-auto">
@@ -233,7 +268,7 @@
     <!-- Education Section -->
     <section id="education" class="py-20 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">
+        <h2 class="text-3xl font-bold text-center mb-12 font-mono">
           Education & Certifications
         </h2>
         <div class="max-w-4xl mx-auto">
@@ -247,7 +282,9 @@
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-gray-50">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">Skills & Expertise</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 font-mono">
+          Skills & Expertise
+        </h2>
         <div class="max-w-6xl mx-auto">
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Technical Skills -->
@@ -287,7 +324,7 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-primary-900 text-white">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
+        <h2 class="text-3xl font-bold mb-8 font-mono">Get In Touch</h2>
         <p class="text-xl mb-8 text-primary-100">
           Let's discuss your next project or opportunity
         </p>
