@@ -1,343 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RAKOTOARISOA ANDRIANINA - Senior Fullstack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                50: '#e8eaf6',
-                100: '#c5cae9',
-                200: '#9fa8da',
-                300: '#7986cb',
-                400: '#5c6bc0',
-                500: '#3f51b5',
-                600: '#3949ab',
-                700: '#303f9f',
-                800: '#283593',
-                900: '#1a237e',
-              },
-              secondary: {
-                50: '#fff3e0',
-                100: '#ffe0b2',
-                200: '#ffcc80',
-                300: '#ffb74d',
-                400: '#ffa726',
-                500: '#ff9800',
-                600: '#fb8c00',
-                700: '#f57c00',
-                800: '#ef6c00',
-                900: '#e65100',
-              },
-              accent: {
-                50: '#f3e5f5',
-                100: '#e1bee7',
-                200: '#ce93d8',
-                300: '#ba68c8',
-                400: '#ab47bc',
-                500: '#9c27b0',
-                600: '#8e24aa',
-                700: '#7b1fa2',
-                800: '#6a1b9a',
-                900: '#4a148c',
-              }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        light: '#f8fafc',
+                        primary: '#38bdf8', // Light Blue
+                        secondary: '#ec4899', // Pink
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'slow-pulse': 'slowPulse 5s infinite ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        },
+                        slowPulse: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.95 },
+                        }
+                    }
+                },
             },
-            animation: {
-              "fade-in": "fadeIn 0.5s ease-in-out",
-              "slide-up": "slideUp 0.6s ease-out",
-            },
-          },
-        },
-      };
+        };
     </script>
     <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
         }
-        to {
-          opacity: 1;
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 9999;
         }
-      }
-      @keyframes slideUp {
-        from {
-          transform: translateY(20px);
-          opacity: 0;
+        .card {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        to {
-          transform: translateY(0);
-          opacity: 1;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 1rem;
+            bottom: 1rem;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
-      }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.375rem;
+            top: 1.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #0f172a;
+            border: 2px solid #38bdf8;
+        }
     </style>
-  </head>
-  <body class="bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav
-      class="fixed top-0 w-full bg-white shadow-md z-50 transition-all duration-300"
-      id="navbar"
-    >
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="text-xl font-bold text-primary-900">ANDRIANINA</div>
-          <div class="hidden md:flex space-x-6">
-            <a href="#about" class="hover:text-primary-700 transition-colors"
-              >About</a
-            >
-            <a href="#experience" class="hover:text-primary-700 transition-colors"
-              >Experience</a
-            >
-            <a href="#education" class="hover:text-primary-700 transition-colors"
-              >Education</a
-            >
-            <a href="#skills" class="hover:text-primary-700 transition-colors"
-              >Skills</a
-            >
-            <a href="#contact" class="hover:text-primary-700 transition-colors"
-              >Contact</a
-            >
-          </div>
-          <button class="md:hidden" id="mobile-menu-btn">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
-      </div>
-      <!-- Mobile Menu -->
-      <div class="md:hidden hidden bg-white border-t" id="mobile-menu">
-        <div class="px-6 py-4 space-y-2">
-          <a href="#about" class="block hover:text-primary-700 transition-colors"
-            >About</a
-          >
-          <a
-            href="#experience"
-            class="block hover:text-primary-700 transition-colors"
-            >Experience</a
-          >
-          <a
-            href="#education"
-            class="block hover:text-primary-700 transition-colors"
-            >Education</a
-          >
-          <a href="#skills" class="block hover:text-primary-700 transition-colors"
-            >Skills</a
-          >
-          <a href="#contact" class="block hover:text-primary-700 transition-colors"
-            >Contact</a
-          >
-        </div>
-      </div>
-    </nav>
+</head>
+<body class="antialiased">
+    
 
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-900 to-accent-800 text-white pt-20"
-    >
-      <div class="container mx-auto px-6 text-center">
-        <div class="animate-fade-in">
-          <h1 class="text-4xl md:text-6xl font-bold mb-4">
-            RAKOTOARISOA ANDRIANINA
-          </h1>
-          <h2 class="text-xl md:text-2xl mb-6 text-primary-200">
-            SENIOR FULLSTACK DEVELOPER (REACT / NODE.JS)
-          </h2>
-          <p class="text-lg mb-8 max-w-2xl mx-auto text-primary-100">
-            7 years of experience specializing in modern web technologies
-          </p>
-          <div class="flex justify-center space-x-4 mb-8">
-            <a
-              href="https://www.linkedin.com/in/andrianina-rakotoarisoa-0b80b2164/"
-              target="_blank"
-              class="bg-white text-primary-900 px-6 py-3 rounded-full hover:bg-primary-50 transition-colors"
-            >
-              <i class="fab fa-linkedin mr-2"></i>LinkedIn
+    <!-- Header -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center card rounded-full px-8 py-2">
+                <a href="#" class="font-display text-xl font-bold text-light">ANDRIANINA</a>
+                <nav class="hidden md:flex space-x-8 text-sm">
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                    <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </nav>
+                <button class="md:hidden text-xl" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden container mx-auto px-6 pb-4">
+             <div class="card rounded-lg p-4 space-y-2">
+                <a href="#about" class="block hover:text-primary transition-colors">About</a>
+                <a href="#experience" class="block hover:text-primary transition-colors">Experience</a>
+                <a href="#skills" class="block hover:text-primary transition-colors">Skills</a>
+                <a href="#contact" class="block hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center relative">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 animate-slow-pulse"></div>
+            <div class="relative z-10">
+                <h1 class="font-display text-4xl md:text-7xl font-bold mb-4 animate-fade-in">RAKOTOARISOA ANDRIANINA</h1>
+                <h2 class="text-xl md:text-2xl text-primary mb-8 animate-fade-in" style="animation-delay: 0.2s;">SENIOR FULLSTACK DEVELOPER</h2>
+                <p class="max-w-2xl mx-auto text-slate-400 mb-8 animate-fade-in" style="animation-delay: 0.4s;">
+                    I build exceptional and accessible digital experiences for the web.
+                </p>
+                <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.6s;">
+                    <a href="#contact" class="bg-primary text-dark font-bold py-3 px-6 rounded-full hover:bg-opacity-90 transition-all">Get in Touch</a>
+                    <a href="https://github.com/AndrianinaH/" target="_blank" class="border-2 border-slate-600 text-light py-3 px-6 rounded-full hover:bg-slate-800 transition-all">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </a>
+                </div>
+            </div>
+            <a href="#about" class="absolute bottom-10 text-2xl animate-bounce"><i class="fas fa-chevron-down"></i></a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24">
+            <div class="grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3">
+                    <h2 class="font-display text-3xl font-bold mb-6">About Me</h2>
+                    <p class="text-slate-400 leading-relaxed" id="summary">
+                        <!-- Summary from JSON -->
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="card p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-code text-primary text-2xl mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg">Frontend</h3>
+                                <p class="text-sm text-slate-400">React, TypeScript, Next.js</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-server text-primary text-2xl mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg">Backend</h3>
+                                <p class="text-sm text-slate-400">Node.js, NestJS, GraphQL</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-mobile-alt text-primary text-2xl mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg">Mobile</h3>
+                                <p class="text-sm text-slate-400">React Native</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24">
+            <h2 class="font-display text-3xl font-bold text-center mb-12">Professional Experience</h2>
+            <div class="relative max-w-3xl mx-auto timeline" id="experience-list">
+                <!-- Experience items from JS -->
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-24">
+            <h2 class="font-display text-3xl font-bold text-center mb-12">Education</h2>
+            <div class="max-w-3xl mx-auto space-y-8" id="education-list">
+                <!-- Education items from JS -->
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <h2 class="font-display text-3xl font-bold text-center mb-12">Skills & Expertise</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="font-display text-xl font-bold mb-4 text-primary"><i class="fas fa-laptop-code mr-2"></i>Technical Skills</h3>
+                    <div class="flex flex-wrap gap-2" id="technical-skills">
+                        <!-- Skills from JS -->
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="font-display text-xl font-bold mb-4 text-secondary"><i class="fas fa-users mr-2"></i>Soft Skills</h3>
+                    <div class="space-y-2" id="soft-skills">
+                        <!-- Skills from JS -->
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="font-display text-xl font-bold mb-4"><i class="fas fa-language mr-2"></i>Languages</h3>
+                    <div class="space-y-3" id="languages">
+                        <!-- Languages from JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 text-center">
+            <h2 class="font-display text-4xl font-bold mb-4">Get In Touch</h2>
+            <p class="text-slate-400 max-w-xl mx-auto mb-8">
+                I'm currently open to new opportunities. Feel free to reach out if you have a project in mind or just want to connect.
+            </p>
+            <a href="mailto:rakotoandrianina@gmail.com" class="inline-block bg-primary text-dark font-bold py-4 px-8 rounded-full hover:bg-opacity-90 transition-all text-lg">
+                <i class="fas fa-envelope mr-2"></i> Say Hello
             </a>
-            <a
-              href="https://github.com/AndrianinaH/"
-              target="_blank"
-              class="bg-transparent border-2 border-white px-6 py-3 rounded-full hover:bg-white hover:text-primary-900 transition-colors"
-            >
-              <i class="fab fa-github mr-2"></i>GitHub
-            </a>
-          </div>
-          <a href="#about" class="inline-block">
-            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-        <div class="max-w-4xl mx-auto">
-          <p class="text-lg leading-relaxed text-gray-600 mb-8">
-            A fullstack developer with 7 years of experience, specializing in
-            front-end development using React and back-end architecture with
-            Node.js. This professional has successfully designed and maintained
-            high-performing web and mobile applications in agile environments.
-            Proficient in the modern JavaScript ecosystem, including React,
-            ReactNative, TypeScript, Nest.js, and Express. Committed to
-            product-oriented projects with a focus on user experience and
-            scalability, i stand out for my versatility, rigor, and a passion
-            for good development practices.
-          </p>
-          <div class="grid md:grid-cols-3 gap-8 text-center">
-            <div class="bg-primary-50 p-6 rounded-lg">
-              <i class="fas fa-code text-3xl text-primary-700 mb-4"></i>
-              <h3 class="text-xl font-semibold mb-2">Frontend Expert</h3>
-              <p class="text-gray-600">React, TypeScript, Modern CSS</p>
+            <div class="flex justify-center space-x-6 mt-12 text-2xl text-slate-400">
+                <a href="https://www.linkedin.com/in/andrianina-rakotoarisoa-0b80b2164/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AndrianinaH/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-github"></i></a>
+                <a href="https://stackoverflow.com/users/11285149/1pulsif" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-stack-overflow"></i></a>
             </div>
-            <div class="bg-secondary-50 p-6 rounded-lg">
-              <i class="fas fa-server text-3xl text-secondary-700 mb-4"></i>
-              <h3 class="text-xl font-semibold mb-2">Backend Developer</h3>
-              <p class="text-gray-600">Node.js, NestJS, GraphQL</p>
-            </div>
-            <div class="bg-accent-50 p-6 rounded-lg">
-              <i class="fas fa-mobile-alt text-3xl text-accent-700 mb-4"></i>
-              <h3 class="text-xl font-semibold mb-2">Mobile Development</h3>
-              <p class="text-gray-600">React Native, Cross-platform</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">
-          Professional Experience
-        </h2>
-        <div class="max-w-4xl mx-auto">
-          <div class="space-y-8" id="experience-list">
-            <!-- Experience items will be populated by JavaScript -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">
-          Education & Certifications
-        </h2>
-        <div class="max-w-4xl mx-auto">
-          <div class="space-y-8" id="education-list">
-            <!-- Education items will be populated by JavaScript -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">Skills & Expertise</h2>
-        <div class="max-w-6xl mx-auto">
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Technical Skills -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4 text-primary-700">
-                <i class="fas fa-laptop-code mr-2"></i>Technical Skills
-              </h3>
-              <div class="flex flex-wrap gap-2" id="technical-skills">
-                <!-- Technical skills will be populated by JavaScript -->
-              </div>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4 text-secondary-700">
-                <i class="fas fa-users mr-2"></i>Soft Skills
-              </h3>
-              <div class="space-y-2" id="soft-skills">
-                <!-- Soft skills will be populated by JavaScript -->
-              </div>
-            </div>
-
-            <!-- Languages -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4 text-accent-700">
-                <i class="fas fa-language mr-2"></i>Languages
-              </h3>
-              <div class="space-y-3" id="languages">
-                <!-- Languages will be populated by JavaScript -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-primary-900 text-white">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
-        <p class="text-xl mb-8 text-primary-100">
-          Let's discuss your next project or opportunity
-        </p>
-        <div
-          class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
-        >
-          <a
-            href="mailto:rakotoandrianina@gmail.com"
-            class="flex items-center bg-white text-primary-900 px-6 py-3 rounded-full hover:bg-primary-50 transition-colors"
-          >
-            <i class="fas fa-envelope mr-2"></i>
-            rakotoandrianina@gmail.com
-          </a>
-          <a
-            href="tel:+261328027776"
-            class="flex items-center bg-transparent border-2 border-white px-6 py-3 rounded-full hover:bg-white hover:text-primary-900 transition-colors"
-          >
-            <i class="fas fa-phone mr-2"></i>
-            +261 32 80 27 776
-          </a>
-        </div>
-        <div class="flex justify-center space-x-6 mt-8">
-          <a
-            href="https://www.linkedin.com/in/andrianina-rakotoarisoa-0b80b2164/"
-            target="_blank"
-            class="text-2xl hover:text-primary-200 transition-colors"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://github.com/AndrianinaH/"
-            target="_blank"
-            class="text-2xl hover:text-primary-200 transition-colors"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://stackoverflow.com/users/11285149/1pulsif"
-            target="_blank"
-            class="text-2xl hover:text-primary-200 transition-colors"
-          >
-            <i class="fab fa-stack-overflow"></i>
-          </a>
-        </div>
-      </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-      <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2025 RAKOTOARISOA ANDRIANINA. All rights reserved.</p>
-      </div>
+    <footer class="text-center py-8 text-slate-500 text-sm">
+        <p>&copy; 2025 RAKOTOARISOA ANDRIANINA. Coded with <i class="fas fa-heart text-secondary"></i> and Tailwind CSS.</p>
     </footer>
 
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-dark w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
